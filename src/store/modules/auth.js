@@ -1,7 +1,8 @@
 import api from '../../api/imgur'
+import qs from 'qs';
 
 const state = {
-    token: null
+    token: window.localStorage.getItem('imgur_token')
 };
 
 const getters = {
@@ -16,7 +17,16 @@ const actions = {
     },
     login: () =>{
         api.login();
-    }
+    },
+    finalizeLogin({commit}, hash){
+         //Gets rid of hash character, and has query string
+        const query = qs.parse(hash.replace('#', ''))
+        //Now use commit to call the set token mutation.
+        //Remember, access token is part of the query string. 
+        commit('setToken', query.access_token); 
+        //This will be used to perist the token!
+        window.localStorage.setItem('imgur_token', query.access_token); 
+    },
 };
 
 const mutations = {
