@@ -20,7 +20,11 @@ import {mapActions} from 'vuex';
 export default {
     name: 'Header',
     methods: {
-        ...mapActions(['login'])
+        //Vuex will find, in all of my Vuex modules, 
+        //an action named 'login' to expose to this 
+        //vue component. 
+        ...mapActions(['login']) 
+
     }
 }
 </script>
