@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import App from './App'
 import store from './store'
 import AuthHandler from './components/AuthHandler'
+import ImageList from './components/ImageList'
+import UploadForm from './components/UploadForm'
 
 Vue.use(VueRouter)
 
@@ -14,10 +16,12 @@ Vue.use(VueRouter)
 // For our purposes here, I am just going to use
 // broswer routing. Browser routing uses everything to the 
 // left of the '#' sign.
-const router = new VueRouter({
+export const router = new VueRouter({
     mode: 'history', //history means to use Browser Routing
     routes: [
-        {path: '/oauth2/callback', component: AuthHandler} // AuthHandler is a component!
+        {path: '/oauth2/callback', component: AuthHandler}, // AuthHandler is a component!
+        {path: '/', component: ImageList}, // ImageList is a component!
+        {path: '/upload', component: UploadForm}, // UploadForm is a component!
     ]
 })
 
