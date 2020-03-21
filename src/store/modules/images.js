@@ -13,9 +13,9 @@ const actions = {
     //{rootState} is a reference to 
     //the entire state, including
     //state of other modules
-    async fetchImages({rootState}){       
+    async fetchImages({rootState, commit}){       
        const response =  await api.fetchImages(rootState.auth.token);
-       console.log(response);
+       commit('setImages', response.data.data)
     }
 };
 
